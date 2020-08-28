@@ -19,12 +19,16 @@ code {
 }
 
 ul {
-  width: 90%;
+  width: 80%;
 }
 .up {
-  color: green;
+  color: #07d807;
 }
 
 .down{
   color: red;
+}
+
+.pic{
+  height: 25px;
 }
