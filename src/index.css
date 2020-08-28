@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.coin-list li {
+  list-style: none;
+  border: solid;
+  border-width: thin;
+}
+
+ul {
+  width: 90%;
+}
+.up {
+  color: green;
+}
+
+.down{
+  color: red;
+}

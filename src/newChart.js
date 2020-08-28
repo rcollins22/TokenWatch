@@ -3,6 +3,8 @@ import ApexCharts from 'apexcharts'
 
 
 export default class ApexChart extends React.Component {
+
+  
   constructor(props) {
     super(props);
 

@@ -1,85 +1,54 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Chart from './Chart'
-import ApexChart from './newChart'
+import Chart from "./Chart";
+import ApexChart from "./newChart";
+import List from './List'
+import axios from "axios"
+
 
 class App extends React.Component {
-
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
   }
-  componentWillMount() {
-    this.getData()
-  }
 
-  getData() {
-    // create a new XMLHttpRequest
-    var xhr = new XMLHttpRequest()
-
-    // get a callback when the server responds
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
-    })
-    // open the request with the verb and the url
-    xhr.open('GET', 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=USD&days=max')
-    // send the request
-    xhr.send()
-  }
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     error: null,
-  //     isLoaded: false,
-  //     items: []
-  //   };
-  // }
- 
-  // componentDidMount() {
-  //   fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=USD&days=max")
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           items: result
-  //         });
-  //       },
-  //       // Note: it's important to handle errors here
-  //       // instead of a catch() block so that we don't swallow
-  //       // exceptions from actual bugs in components.
-  //       (error) => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           error
-  //         });
-  //       }
-  //     )
-  //     console.log(this.state.items)
-  // }
   
-  render (){
+  componentWillMount () {
+    axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß")
+      .then(resp=> {
+        this.setState({data: resp.data})
+        console.log(this.state.data)
+      })
+  }
+  
+
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Chart name = "testing" />
+          <Chart name="The 100 Watch App" />
           <p>
-            nooo<code>src/App.js</code> and save to reload.
+           The crypto Market app Built with React
           </p>
+          
+          <List  data = {this.state.data} />
+          
           <a
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            This will be a cool app at some point
           </a>
-         
         </header>
       </div>
     );
   }
-};
+}
 
 export default App;
