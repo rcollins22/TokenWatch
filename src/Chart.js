@@ -4,6 +4,17 @@ import { render } from '@testing-library/react';
 
 
 const Chart = (props) => {
+
+    useEffect(() => {
+        
+        axios.get("https://api.coingecko.com/api/v3/coins/bitcoin")
+        .then(resp=> {
+          this.setState({data: resp.data})
+          console.log(this.state.data)
+        });
+      });
+    
+
     console.log(props.name)
    return(
        <div>
