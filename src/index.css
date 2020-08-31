@@ -23,12 +23,44 @@ ul {
 }
 .up {
   color: #07d807;
+  
 }
-
+.iup{
+  background-color: #00fb0a2e;
+}
 .down{
   color: red;
+}
+.idwn{
+  background-color: #801c1c45;
 }
 
 .pic{
   height: 25px;
+}
+
+.coin-inst {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px;
+  border: solid;
+  border-radius: 50px;
+  padding: 13px;
+  border-width: thin;
+  border-color: #2120234f;
+
+}
+
+.coin-inst:hover{
+  background-color: #5c00ff;
+  border-color: #5c00ff;
+  color: black;
+
+}
+.symbol{
+  font-size: small;
+}
+.coinNest{
+  width: 80%;
 }

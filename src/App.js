@@ -35,7 +35,7 @@ class App extends React.Component {
            The crypto Market app Built with React
           </p>
           
-          <List  data = {this.state.data} />
+          <List  data = {this.state.data}  />
           
           <a
             className="App-link"
