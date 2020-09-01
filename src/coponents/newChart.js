@@ -2,7 +2,7 @@ import React from 'react'
 import ApexCharts from 'apexcharts'
 
 
-export default class ApexChart extends React.Component {
+class ApexChart extends React.Component {
 
   
   constructor(props) {
@@ -87,6 +87,6 @@ export default class ApexChart extends React.Component {
     );
   }
 }
-
+// export default Apex
 
 const domContainer = document.querySelector("#app");

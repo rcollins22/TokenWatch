@@ -44,7 +44,6 @@ class App extends React.Component {
             <Route exact path="/">
               <List data={this.state.data} />
             </Route>
-            {/* <Route exact path="/props-through-render" render={(props) => <PropsPage {...props} title={`Props through render`} />} /> */}
           </div>
         </Switch>
       </Router>
