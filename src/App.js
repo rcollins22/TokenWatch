@@ -1,52 +1,53 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Chart from "./Chart";
-import ApexChart from "./newChart";
-import List from './List'
-import axios from "axios"
-
+import ApexChart from "./coponents/newChart";
+import List from "./List";
+import axios from "axios";
+import Info from "./Info";
+import {
+  BrowserRouter as Router,
+  withRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
+import Coin from "./coponents/Coin";
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      data: []
-    }
+      data: [],
+    };
   }
 
-  
-  componentWillMount () {
-    axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß")
-      .then(resp=> {
-        this.setState({data: resp.data})
-        console.log(this.state.data)
-      })
+  componentDidMount() {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß"
+      )
+      .then((resp) => {
+        this.setState({ data: resp.data });
+        console.log(this.state.data);
+      });
   }
-  
-
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>The 100 Watch App</h1> 
-          <p>
-           The crypto Market app Built with React
-          </p>
-          
-          <List  data = {this.state.data}  />
-          
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            This will be a cool app at some point
-          </a>
-        </header>
-      </div>
+      <Router>
+        <Switch>
+          <div className="App">
+            <header className="App-header">
+              <h1>The 100 Watch App</h1>
+            </header>
+            <Route exact path="/:coinID" component={withRouter(Info)} />
+            <Route exact path="/">
+              <List data={this.state.data} />
+            </Route>
+            {/* <Route exact path="/props-through-render" render={(props) => <PropsPage {...props} title={`Props through render`} />} /> */}
+          </div>
+        </Switch>
+      </Router>
     );
   }
 }

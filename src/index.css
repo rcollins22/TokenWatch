@@ -16,6 +16,12 @@ code {
   list-style: none;
   border: solid;
   border-width: thin;
+
+}
+
+ a {
+  text-decoration: none;
+  color: white;
 }
 
 ul {
@@ -63,4 +69,5 @@ ul {
 }
 .coinNest{
   width: 80%;
+  color: white;
 }
