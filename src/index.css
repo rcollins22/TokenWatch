@@ -76,6 +76,7 @@ ul {
   color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px #1a171b;
+  padding: 10px;
 }
 
 #leftHead {
@@ -86,9 +87,14 @@ ul {
 }
 #rightHead{
   float: right;
+  display: flex;
+  flex-direction: column;
+
 }
 .head-box {
+  margin: auto;
   width: 85%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
