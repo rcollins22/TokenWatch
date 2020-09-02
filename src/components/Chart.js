@@ -8,7 +8,6 @@ import ApexCharts from 'apexcharts'
 
 function Chart(props) {
   let coinID = props.coin
-  console.log(coinID)
   const [dateArr, setdateArr] = useState([]);
   const [priceArr, setpriceArr] = useState([]);
   const [chartPrices, setchartPrices] = useState([]);
@@ -17,7 +16,6 @@ function Chart(props) {
   const getInfo = async () => {
     const rawData = await fetch(`https://api.coingecko.com/api/v3/coins/${coinID}/market_chart?vs_currency=usd&days=365`);
     const chartData = await rawData.json();
-    console.log(chartData)
     let dateArr=[];
     let priceArr=[];
     const chartPrices = chartData.prices
@@ -29,7 +27,6 @@ function Chart(props) {
       setpriceArr(priceArr)
     });
     console.log(coinID)
-    console.log(dateArr,priceArr)
   }
   useEffect(() => {
     getInfo()

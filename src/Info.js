@@ -7,7 +7,6 @@ import Donut from './components/Donut'
 
 function Info() {
   let { coinID } = useParams();
-  console.log(coinID);
   useEffect(() => {
     getInfo();
   }, []);
@@ -67,7 +66,7 @@ function Info() {
       }
     };
     const atlD = cMar.atl_date.usd;
-    console.log(atlD.type);
+
     const atlDate = shortString(atlD, 10);
     setatlDate(atlDate);
 
@@ -112,6 +111,8 @@ function Info() {
 
     const atlCh = cMar.atl_change_percentage.usd.toFixed(2);
     setatlCh(atlCh);
+
+    const cSym = coinInfo.symbol
   };
 
   return (

@@ -30,7 +30,6 @@ class App extends React.Component {
       )
       .then((resp) => {
         this.setState({ data: resp.data });
-        console.log(this.state.data);
       });
   }
 
