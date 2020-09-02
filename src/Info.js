@@ -35,16 +35,16 @@ function Info() {
 
     const cMar = coinInfo.market_data;
 
-    const atl = cMar.atl.usd;
+    const atl = cMar.atl.usd.toFixed(3);
     setatl(atl);
 
-    const ath = cMar.ath.usd.toFixed(2);
+    const ath = cMar.ath.usd.toFixed(3);
     setath(ath);
 
-    const hourL = cMar.low_24h.usd.toFixed(2);
+    const hourL = cMar.low_24h.usd.toFixed(3);
     sethourL(hourL);
 
-    const hourH = cMar.high_24h.usd;
+    const hourH = cMar.high_24h.usd.toFixed(3);
     sethourH(hourH);
 
     const hourChg = cMar.market_cap_change_24h_in_currency.usd;
@@ -57,7 +57,7 @@ function Info() {
     setathDate(athDate);
 
     const rawPrice = cMar.current_price.usd;
-    const curPrice = rawPrice.toFixed(2);
+    const curPrice = rawPrice.toFixed(3);
     setcurPrice(curPrice);
 
     function numFormat(labelValue) {
@@ -86,7 +86,7 @@ function Info() {
         <div id="leftHead">
           <img className="head-img" src={cPicOb.small} />
           <h1 className="head-text">{coinInfo.name}</h1>
-          <h5>{coinInfo.symbol}</h5>
+          <h5 id="symb">{coinInfo.symbol}</h5>
         </div>
         <div id="rightHead">
           <p className="head-small">
@@ -101,6 +101,9 @@ function Info() {
         </div>
       </div>
     </header>
+    <div className=" info-box chart-box">
+      
+    </div>
   );
 }
 

@@ -83,12 +83,13 @@ ul {
   float: left;
   height: 100%;
   display: flex;
-  align-items: bottom;
+  align-items: center;
 }
 #rightHead{
   float: right;
   display: flex;
   flex-direction: column;
+  text-align: right;
 
 }
 .head-box {
@@ -97,4 +98,20 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.head-img{
+  height: fit-content;
+}
+
+#symb{
+  margin-left: 9%;
+  margin-bottom: 3%;
+}
+.price{
+  margin: 2%;
+}
+.head-small{
+  margin: 0;
 }
