@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "./index.css";
 import { useParams } from "react-router-dom";
+import Chart from "./components/Chart";
 
 function Info() {
   let { coinID } = useParams();
+  console.log(coinID);
   useEffect(() => {
     getInfo();
   }, []);
@@ -22,6 +25,14 @@ function Info() {
   const [curPrice, setcurPrice] = useState([]);
   const [mCap, setmCap] = useState([]);
   const [coinDesc, setcoinDesc] = useState([]);
+  const [pcgCh, setpcgCh] = useState([]);
+  const [ttlSply, setttlSply] = useState([]);
+  const [cirSply, setcirSply] = useState([]);
+  const [vol, setvol] = useState([]);
+  const [atlCh, setatlCh] = useState([]);
+  const [athCh, setathCh] = useState([]);
+
+  
 
   const getInfo = async () => {
     const cInst = await fetch(fetchLink);
@@ -34,6 +45,7 @@ function Info() {
     setCPicOb(cPicOb);
 
     const cMar = coinInfo.market_data;
+    const volData = cMar.total_volume;
 
     const atl = cMar.atl.usd.toFixed(3);
     setatl(atl);
@@ -50,38 +62,63 @@ function Info() {
     const hourChg = cMar.market_cap_change_24h_in_currency.usd;
     sethourChg(hourChg);
 
-    const atlDate = cMar.atl_date.usd;
+    const shortString = function (str1, length) {
+  
+      if ((str1.constructor === String) && (length>0)) {
+          return str1.slice(0, length);
+      }
+    };
+    const atlD = cMar.atl_date.usd;
+    console.log(atlD.type)
+    const atlDate = shortString(atlD,10)
     setatlDate(atlDate);
 
-    const athDate = cMar.ath_date.usd;
+    const athD = cMar.ath_date.usd;
+    const athDate= shortString(athD,10)
     setathDate(athDate);
+    
+    const pcgCh = cMar.price_change_percentage_24h.toFixed(2);
+    setpcgCh(pcgCh);
+
+    const ttlSply = cMar.max_supply;
+    setttlSply(ttlSply);
+
+    const cirSply = cMar.circulating_supply;
+    setcirSply(cirSply);
+
+    const vol = numFormat(volData.usd);
+    setvol(vol);
 
     const rawPrice = cMar.current_price.usd;
     const curPrice = rawPrice.toFixed(3);
     setcurPrice(curPrice);
 
     function numFormat(labelValue) {
-      // Nine Zeroes for Billions
       return Math.abs(Number(labelValue)) >= 1.0e9
         ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + "B"
-        : // Six Zeroes for Millions
-        Math.abs(Number(labelValue)) >= 1.0e6
+        : Math.abs(Number(labelValue)) >= 1.0e6
         ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(2) + "M"
-        : // Three Zeroes for Thousands
-        Math.abs(Number(labelValue)) >= 1.0e3
+        : Math.abs(Number(labelValue)) >= 1.0e3
         ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(2) + "K"
         : Math.abs(Number(labelValue));
     }
+    
+    
     const mCap = numFormat(cMar.market_cap.usd);
-
     setmCap(mCap);
 
     const coinDesc = coinInfo.description.en;
     setcoinDesc(coinDesc);
+
+    const athCh = cMar.ath_change_percentage.usd.toFixed(2)
+    setathCh(athCh)    
+
+    const atlCh = cMar.atl_change_percentage.usd.toFixed(2)
+    setatlCh(atlCh)
   };
 
   return (
-    <header>
+    <body>
       <div className="info-box head-box">
         <div id="leftHead">
           <img className="head-img" src={cPicOb.small} />
@@ -94,16 +131,54 @@ function Info() {
             <span className="down"> ${hourL}</span>/
             <span className="up">${hourH}</span>
           </p>
-          <h2 className="price">${curPrice}</h2>
+          <h2 className="price">
+            ${curPrice} <span className="pcg">{pcgCh}%</span>
+          </h2>
           <p className="head-small">
-            Market Cap:<span className="cap">${mCap}</span>
+            Market Cap:<span className="bld"> ${mCap}</span>
           </p>
         </div>
       </div>
-    </header>
-    <div className=" info-box chart-box">
-      
-    </div>
+      <div id="section-mid">
+        <div className=" info-box chart-box">
+          <Chart coin={coinID} />
+        </div>
+        <div className="info-box market-box">
+          <p className="market-text 1">
+            Market Rank:
+            <span className="rnum bld">{coinInfo.market_cap_rank}</span>
+          </p>
+          <p className="market-text 2">
+            24 Hour Volume: <span className="rnum bld">${vol}</span>
+          </p>
+          <p className="market-text 1">
+            All-Time High:
+            <span className="rnum bld">${ath}</span>
+          </p>
+          <p className="market-text 2">
+            All-Time High Date:
+            <span className="rnum bld">{athDate}</span>
+          </p>
+          <p className="market-text 1">
+            All-Time High % Change: <span className="rnum bld">{athCh}%</span>
+          </p>
+          <p className="market-text 2">
+            All-Time Low: <span className="rnum bld">${atl}</span>
+          </p>
+          <p className="market-text 1">
+            All-Time Low Date:
+            <span className="rnum bld">{atlDate}</span>
+          </p>
+          <p className="market-text 2">
+            All-Time Low % Change: <span className="rnum bld">{atlCh}%</span>
+          </p>
+        </div>
+        
+      </div>
+      <div className="info-box about-box">
+        <h1>About {coinInfo.name}</h1>
+      </div>
+    </body>
   );
 }
 

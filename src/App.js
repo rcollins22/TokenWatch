@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import Chart from "./Chart";
-import ApexChart from "./coponents/newChart";
 import List from "./List";
 import axios from "axios";
 import Info from "./Info";
@@ -11,7 +9,11 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Coin from "./coponents/Coin";
+import ApexCharts from 'apexcharts'
+import Chart from './components/Chart'
+
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios
       .get(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß"

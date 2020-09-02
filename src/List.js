@@ -1,5 +1,5 @@
 import React from "react";
-import Coin from "./coponents/Coin";
+import Coin from "./components/Coin";
 
 const List = ({ data }) => {
   return (
