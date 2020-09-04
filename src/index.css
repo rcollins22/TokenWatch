@@ -125,14 +125,17 @@ ul {
   margin: 0;
 }
 
-#section-mid{
+#section-mid {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: 40px;
   justify-content: center;
 }
 .chart-box{
 width: 55%;
 min-width: 300px;
+min-height: 300px;
 }
 
 #chart{

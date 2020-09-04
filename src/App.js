@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import List from "./List";
 import axios from "axios";
@@ -9,8 +9,6 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import ApexCharts from "apexcharts";
-import Chart from "./components/Chart";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +28,9 @@ class App extends React.Component {
         console.log(this.state.data);
       });
   }
+  componentDidMount() {
+    document.title = 'TokenWatch';
+  }
 
   render() {
     return (
@@ -38,10 +39,10 @@ class App extends React.Component {
           <div className="App">
             <header className="App-header">
               <nav className="nav-menu">
-                <a className="nav-text" href="/"> Home</a>
+                <a style={{fontSize: "12pt"}} className="nav-text" href="/"> Home</a>
               </nav>
-              <h1>TokenWatch</h1>
-              <p style={{fontSize: "12pt"}}>The Crypto Monitoring App built with React</p>
+              <h1 style={{fontSize: "36pt"}}>TokenWatch</h1>
+              <p style={{fontSize: "16pt"}}>The Crypto Monitoring App built with React</p>
             </header>
             <Route exact path="/:coinID" component={withRouter(Info)} />
             <Route exact path="/">

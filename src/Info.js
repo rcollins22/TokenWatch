@@ -12,6 +12,8 @@ function Info() {
     getInfo();
   }, []);
 
+  
+
   let fetchLink = `https://api.coingecko.com/api/v3/coins/${coinID}?localization=false&tickers=false`;
 
   const [coinInfo, setcoinInfo] = useState([]);
@@ -122,6 +124,7 @@ function Info() {
     const cSym = coinInfo.symbol
   };
 
+  
   return (
     <body>
       <div className="info-box head-box">
