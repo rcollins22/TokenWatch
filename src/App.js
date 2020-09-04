@@ -18,6 +18,7 @@ class App extends React.Component {
     };
   }
 
+  // AXIOS IS USED TO FETCH API IN CLASS COMPONENTS
   componentWillMount() {
     axios
       .get(
@@ -28,6 +29,7 @@ class App extends React.Component {
         console.log(this.state.data);
       });
   }
+  // SETS TITLE TO 'TokenWatch'
   componentDidMount() {
     document.title = 'TokenWatch';
   }
@@ -46,7 +48,7 @@ class App extends React.Component {
             </header>
             <Route exact path="/:coinID" component={withRouter(Info)} />
             <Route exact path="/">
-              <List data={this.state.data} />
+               <List data={this.state.data} />   {/*This components houses the list of tokens */}
             </Route>
           </div>
         </Switch>

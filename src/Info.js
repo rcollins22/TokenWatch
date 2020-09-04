@@ -7,15 +7,16 @@ import Donut from './components/Donut'
 import ReactDOM from 'react-dom'
 
 function Info() {
-  let { coinID } = useParams();
+  let { coinID } = useParams();          
   useEffect(() => {
     getInfo();
   }, []);
 
   
-
+  // THIS SETS VARIABLE FETCH LINK TO CHANGE BASED ON THE TOKEN SELECTED.
   let fetchLink = `https://api.coingecko.com/api/v3/coins/${coinID}?localization=false&tickers=false`;
 
+  // SETTING POTENTIALLY NEEDED VARIABLES TO STATE FOR USE
   const [coinInfo, setcoinInfo] = useState([]);
   const [cPicOb, setCPicOb] = useState([]);
   const [ath, setath] = useState([]);
@@ -36,7 +37,7 @@ function Info() {
   const [athCh, setathCh] = useState([]);
 
   const getInfo = async () => {
-    const cInst = await fetch(fetchLink);
+    const cInst = await fetch(fetchLink);       //FETCHES API HERE
 
     const coinInfo = await cInst.json();
     console.log(coinInfo);
@@ -48,7 +49,7 @@ function Info() {
     const cMar = coinInfo.market_data;
     const volData = cMar.total_volume;
 
-    const atl = cMar.atl.usd.toFixed(3);
+    const atl = cMar.atl.usd.toFixed(3);   //'.toFixed(3)' SETS THE DECIMAL TO ALWAYS ROUND TO HUNDREDTH (.000)
     setatl(atl);
 
     const ath = cMar.ath.usd.toFixed(3);
@@ -63,8 +64,8 @@ function Info() {
     const hourChg = cMar.market_cap_change_24h_in_currency.usd;
     sethourChg(hourChg);
 
-    const shortString = function (str1, length) {
-      if (str1.constructor === String && length > 0) {
+    const shortString = function (str1, length) {             //THIS FUNCTION WAS USED TO CREATE TO TAKE ONLY THE 
+      if (str1.constructor === String && length > 0) {       // NEEDED PORTION OF THE RETURNED DATE
         return str1.slice(0, length);
       }
     };
@@ -93,7 +94,8 @@ function Info() {
     const curPrice = rawPrice.toFixed(3);
     setcurPrice(curPrice);
 
-    function numFormat(labelValue) {
+    // THE FOLLOWING FUNCTION FORMATS NUMBERS FROM (6743474990 -> 6.74B ) 
+    function numFormat(labelValue) { 
       return Math.abs(Number(labelValue)) >= 1.0e9
         ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + "B"
         : Math.abs(Number(labelValue)) >= 1.0e6

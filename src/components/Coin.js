@@ -7,16 +7,17 @@ import {
   useParams,
 } from "react-router-dom";
 
-const Coin = ({ coin }) => {
+
+// THIS FUNCTION COMPONENT TAKES THE COIN INSTANCES AND POPULATES A JSX ELEMENT DEPENDING ON WHETHER ITS UP OR DOWN IN PRICE
+const Coin = ({ coin }) => {      
     const switchURL = () => {
-        window.location=`/${coin.id}`
+        window.location=`/${coin.id}`   //THIS SWITCHES THE PAGE TO THE COIN BASED ON COIN'S ID
     }
-  if (coin.price_change_percentage_24h > 0) {
+  if (coin.price_change_percentage_24h > 0) {   //OPTIONS FOR POSITIVE MOVING TOKENS ARE PLACED IN JSX HERE. FOR STYLING
     return (
       <Router>
-        {/* <Link to={`/${coin.id}`}> */}
           <div className="coin-inst iup" onClick={switchURL}>
-            <span className="rankNo">{coin.market_cap_rank}</span>
+            <span className="rankNo">{coin.market_cap_rank}</span>    
             <img src={coin.image} className="pic" />
             <span className="name">{coin.name}</span>
             <span className="symbol">{coin.symbol}</span>
@@ -30,13 +31,11 @@ const Coin = ({ coin }) => {
               %
             </span>
           </div>
-        {/* </Link> */}
       </Router>
     );
-  } else {
-    return (
+  } else {                             //NEGATIVE MOVING COINS ARE PLACED IN JSX HERE. FOR STYLING
+    return (                         
         <Router>
-        {/* <Link to={`/${coin.id}`} > */}
           <div className="coin-inst idwn" onClick={switchURL} >
             <span className="rankNo">{coin.market_cap_rank}</span>
             <img src={coin.image} className="pic" />
@@ -47,12 +46,11 @@ const Coin = ({ coin }) => {
             </span>
             <span className="change down">
               {Math.round(
-                (coin.price_change_percentage_24h + Number.EPSILON) * 100
+                (coin.price_change_percentage_24h + Number.EPSILON) * 100           //SETS PERCENTAGE TO READABLE FORMAT
               ) / 100}
               %
             </span>
           </div>
-        {/* </Link> */}
       </Router>
     );
   }
