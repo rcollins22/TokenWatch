@@ -19,10 +19,10 @@ function Chart(props) {
     const chartData = await rawData.json();
     console.log(rawData)
     console.log(chartData)
-  
+
     const chartPrices = chartData.prices
     setchartPrices(chartPrices)
-    chartData.prices.map((instArr)=>{
+    chartData.prices.map((instArr) => {
       dateArr.push(new Date(instArr[0]));
       setdateArr(dateArr)
       priceArr.push(instArr[1].toFixed(2))
@@ -34,11 +34,11 @@ function Chart(props) {
     getInfo()
   }, []);
 
-  const series =[{
+  const series = [{
     name: name,
     data: chartPrices
   }];
-  
+
   const options = {
     chart: {
       type: "area",
@@ -61,7 +61,7 @@ function Chart(props) {
       size: 0
     },
     title: {
-      text: `Price Movement`,
+      text: `Price Movement (1 Year)`,
       align: "center"
     },
     fill: {
@@ -75,25 +75,25 @@ function Chart(props) {
       }
     },
     theme: {
-      mode: 'dark', 
-      palette: 'palette9', 
+      mode: 'dark',
+      palette: 'palette9',
       monochrome: {
-          enabled: true,
-          color: '#1689F8',
-          shadeTo: 'dark',
-          shadeIntensity: 0.95
+        enabled: true,
+        color: '#1689F8',
+        shadeTo: 'dark',
+        shadeIntensity: 0.95
       }
-  },
+    },
     yaxis: {
       labels: {
         formatter: function (val) {
           return (val).toFixed(3);
-          },
+        },
       },
       title: {
         text: "Price",
       },
-      tickAmount:10
+      tickAmount: 10
     },
     xaxis: {
       type: "datetime",
@@ -102,7 +102,7 @@ function Chart(props) {
       shared: false,
       y: {
         formatter: function (val) {
-        return val.toFixed(4);
+          return val.toFixed(4);
         },
       },
     },
