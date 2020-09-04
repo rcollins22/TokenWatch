@@ -18,3 +18,5 @@ You will also see any lint errors in the console.
 TokenWatch brings you up-to-the-minute updates in the cryptocurrency marketplace. Using 100% React, TokenWatch fetches information from CoinGecko's API and displays more sought after information in a snap!
 
 
+![GitHub Logo](/src/screenshot.png)
+Format: ![Screenshot of TokenWatch](url)
