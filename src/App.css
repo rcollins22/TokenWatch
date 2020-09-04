@@ -42,4 +42,6 @@
     transform: rotate(360deg);
   }
 }
-
+.nav-menu{
+  float: right;
+}

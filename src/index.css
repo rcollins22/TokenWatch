@@ -25,6 +25,10 @@ a {
   color: white;
 }
 
+header > a{
+  float: right;
+}
+
 ul {
   width: 80%;
 }
@@ -35,7 +39,7 @@ ul {
   background-color: #00fb0a2e;
 }
 .down {
-  color: red;
+  color: #ff4343;
 }
 .idwn {
   background-color: #801c1c45;
@@ -128,6 +132,7 @@ ul {
 }
 .chart-box{
 width: 55%;
+min-width: 300px;
 }
 
 #chart{
@@ -137,10 +142,12 @@ width: 55%;
 .market-box{
   width: 90%;
   padding:0px 15px 0px 15px;
-  height: 50%;
+  height: 40%;
 }
 .market-text{
   text-align: left;
+  margin: 3%;
+  
 }
 .rnum{
   float: right;
@@ -149,4 +156,12 @@ width: 55%;
 #floatbox{
   display: flex;
   flex-direction: column;
+}
+
+.donut-box{
+  height: 47%;
+  width: 94%;
+}
+#chart{
+  height: 100%;
 }

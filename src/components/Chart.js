@@ -8,6 +8,7 @@ import ApexCharts from 'apexcharts'
 
 function Chart(props) {
   let coinID = props.coin
+  let name = props.name
   const [dateArr, setdateArr] = useState([]);
   const [priceArr, setpriceArr] = useState([]);
   const [chartPrices, setchartPrices] = useState([]);
@@ -16,8 +17,9 @@ function Chart(props) {
   const getInfo = async () => {
     const rawData = await fetch(`https://api.coingecko.com/api/v3/coins/${coinID}/market_chart?vs_currency=usd&days=365`);
     const chartData = await rawData.json();
-    let dateArr=[];
-    let priceArr=[];
+    console.log(rawData)
+    console.log(chartData)
+  
     const chartPrices = chartData.prices
     setchartPrices(chartPrices)
     chartData.prices.map((instArr)=>{
@@ -33,17 +35,16 @@ function Chart(props) {
   }, []);
 
   const series =[{
-    name: {coinID},
+    name: name,
     data: chartPrices
   }];
   
   const options = {
     chart: {
-      // background: none,
       type: "area",
       stacked: false,
       height: 350,
-      foreColor: '#ffffff',
+      background: '#000ffffff',
       zoom: {
         type: "x",
         enabled: true,
@@ -74,11 +75,11 @@ function Chart(props) {
       }
     },
     theme: {
-      mode: 'light', 
-      palette: 'palette10', 
+      mode: 'dark', 
+      palette: 'palette9', 
       monochrome: {
           enabled: true,
-          color: '#e1d5e8',
+          color: '#1689F8',
           shadeTo: 'dark',
           shadeIntensity: 0.95
       }
@@ -113,7 +114,7 @@ function Chart(props) {
         options={options}
         series={series}
         type="area"
-        height={550}
+        height="100%"
       />
     </div>
   );

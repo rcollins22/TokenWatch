@@ -9,11 +9,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import ApexCharts from 'apexcharts'
-import Chart from './components/Chart'
-
-
-
+import ApexCharts from "apexcharts";
+import Chart from "./components/Chart";
 
 class App extends React.Component {
   constructor(props) {
@@ -26,10 +23,11 @@ class App extends React.Component {
   componentWillMount() {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7dß"
       )
       .then((resp) => {
         this.setState({ data: resp.data });
+        console.log(this.state.data);
       });
   }
 
@@ -39,7 +37,11 @@ class App extends React.Component {
         <Switch>
           <div className="App">
             <header className="App-header">
-              <h1>The 100 Watch App</h1>
+              <nav className="nav-menu">
+                <a className="nav-text" href="/"> Home</a>
+              </nav>
+              <h1>TokenWatch</h1>
+              <p style={{fontSize: "12pt"}}>The Crypto Monitoring App built with React</p>
             </header>
             <Route exact path="/:coinID" component={withRouter(Info)} />
             <Route exact path="/">
