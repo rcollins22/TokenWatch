@@ -3,9 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## TokenWatch. Cryptocurrency Price monitoring App
 
 To begin:
-npm install
-npm start
 
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.<br />
