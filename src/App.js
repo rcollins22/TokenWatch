@@ -31,7 +31,7 @@ class App extends React.Component {
   }
   // SETS TITLE TO 'TokenWatch'
   componentDidMount() {
-    document.title = 'TokenWatch';
+    document.title = "TokenWatch";
   }
 
   render() {
@@ -41,14 +41,20 @@ class App extends React.Component {
           <div className="App">
             <header className="App-header">
               <nav className="nav-menu">
-                <a style={{fontSize: "12pt"}} className="nav-text" href="/"> Home</a>
+                <a style={{ fontSize: "12pt" }} className="nav-text" href="/">
+                  {" "}
+                  Home
+                </a>
               </nav>
-              <h1 style={{fontSize: "36pt"}}>TokenWatch</h1>
-              <p style={{fontSize: "16pt"}}>The Crypto Monitoring App built with React</p>
+              <h1 style={{ fontSize: "36pt" }}>TokenWatch</h1>
+              <p style={{ fontSize: "16pt" }}>
+                The Crypto Monitoring App built with React
+              </p>
             </header>
             <Route exact path="/:coinID" component={withRouter(Info)} />
-            <Route exact path="/">
-               <List data={this.state.data} />   {/*This components houses the list of tokens */}
+            <Route exact path="/TokenWatch">
+              <List data={this.state.data} />{" "}
+              {/*This components houses the list of tokens */}
             </Route>
           </div>
         </Switch>
