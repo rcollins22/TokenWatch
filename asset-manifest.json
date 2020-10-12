@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TokenWatch/static/css/main.7e155142.chunk.css",
+    "main.js": "/TokenWatch/static/js/main.ff4699d6.chunk.js",
+    "main.js.map": "/TokenWatch/static/js/main.ff4699d6.chunk.js.map",
+    "runtime-main.js": "/TokenWatch/static/js/runtime-main.d4823048.js",
+    "runtime-main.js.map": "/TokenWatch/static/js/runtime-main.d4823048.js.map",
+    "static/js/2.8a903dd5.chunk.js": "/TokenWatch/static/js/2.8a903dd5.chunk.js",
+    "static/js/2.8a903dd5.chunk.js.map": "/TokenWatch/static/js/2.8a903dd5.chunk.js.map",
+    "index.html": "/TokenWatch/index.html",
+    "precache-manifest.827a441748b30b7ba6c346c7878c9595.js": "/TokenWatch/precache-manifest.827a441748b30b7ba6c346c7878c9595.js",
+    "service-worker.js": "/TokenWatch/service-worker.js",
+    "static/css/main.7e155142.chunk.css.map": "/TokenWatch/static/css/main.7e155142.chunk.css.map",
+    "static/js/2.8a903dd5.chunk.js.LICENSE.txt": "/TokenWatch/static/js/2.8a903dd5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d4823048.js",
+    "static/js/2.8a903dd5.chunk.js",
+    "static/css/main.7e155142.chunk.css",
+    "static/js/main.ff4699d6.chunk.js"
+  ]
+}
