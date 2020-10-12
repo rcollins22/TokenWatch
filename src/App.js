@@ -51,7 +51,7 @@ class App extends React.Component {
                 The Crypto Monitoring App built with React
               </p>
             </header>
-            <Route exact path="/:coinID" component={withRouter(Info)} />
+            <Route exact path="/TokenWatch/:coinID" component={withRouter(Info)} />
             <Route exact path="/TokenWatch">
               <List data={this.state.data} />{" "}
               {/*This components houses the list of tokens */}
